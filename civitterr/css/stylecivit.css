@@ -1,0 +1,18 @@
+header{
+	height: 300px;
+	background-color: white;
+	border-bottom:2px solid orange;
+	position: relative;
+	}
+.menu{margin:0;text-align: center;}
+.menu li{display: inline-block;height: 50px;margin:0;}
+.menu li a{ padding:15px;color:#4966EA;font-weight: bold;}
+.menu li a:hover{text-decoration: none;border-bottom:1px solid rgba(245, 187, 80, 0.83);}
+#logout{float: right;color:#4966EA;font-weight: bold;margin-right: 10px;font-size: 18px;}
+.civitler{border-bottom:2px solid silver; position: relative;margin-top:40px; }
+.civitler h4{color:#4966EA;font-weight: bold;}
+.civitler>p{margin-left: 10px;}
+.civitler span{float: right; color:silver;}
+.Editbuton{position: absolute;right: 0;top:10px;}
+.delete{position: absolute;right: 0;top: -20px;}
+.likebutton p{display: inline-block; margin-right: 5px;}

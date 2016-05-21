@@ -1,0 +1,6 @@
+.counts {position: absolute;top:100px;}
+.info {position: absolute;top:10px;}
+.userposts{ position: relative; margin-top:20px; border-bottom: 1px solid gray;overflow-wrap: break-word;}
+
+.Editbuton {position:absolute;top:30px;right:0;}
+.delete {position: absolute;top:0; right: 0;}
