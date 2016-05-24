@@ -40,4 +40,35 @@ $('form.ajax').on('submit',function(){
  	return false; 
  	
 		
+});
+
+$('.follow').on('click',function(e){
+	e.preventDefault();
+	var url=$(this).attr('href');
+	     followingid=$(this).attr('id');
+
+$.ajax({
+	url: url,
+	type: 'GET',
+	success:function(){
+		location.reload();
+	}
 })
+return false;
+});
+
+$('.likebutton').on('click',function(e){
+	e.preventDefault();
+	var url=$(this).attr('href');
+	$.ajax({
+		url: url,
+		type: 'GET',
+		success:function(){
+			location.reload();
+		}
+		
+	})
+	return false;
+
+	
+});

@@ -7,7 +7,7 @@ require_once 'session.php';
 $islem=$_SESSION['kullanici'];
 $username=$islem['User_Name'];
 $userid=$islem['User_Id'];
-$sorgu=$db->query('SELECT * FROM posts ORDER BY Date DESC',PDO::FETCH_ASSOC);
+
 $userquery=$db->prepare('SELECT * FROM users WHERE User_Id=:userid');
 $likes=$db->prepare('SELECT * FROM likes WHERE Post_Id=:postid');
 $begen=true;
@@ -30,7 +30,7 @@ $begen=true;
 <nav>
 <ul class="menu">
 	<li><a href="civits.php">General</a></li>
-	<li><a href="follows.php">Follows</a></li>
+	<li><a href="#">Follows</a></li>
 	<li><a href="profile.php?id=<?php echo htmlspecialchars($userid); ?>">Profile</a></li>
 	<a href="Logout.php" id="logout"><i class="glyphicon glyphicon-log-out"></i></a>
 </ul>
@@ -39,7 +39,19 @@ $begen=true;
 <div class="container col-md-12 col-xs-12">
 <div class="posts col-md-9 col-xs-12 col-md-offset-3 col-xs-offset-1">
 <?php 
-if (array_key_exists('kullanici',$_SESSION)) {
+$followed=$db->prepare('SELECT * FROM follow WHERE Follower_Id=:follower');
+$followed->execute(array(
+	':follower'=>$islem['User_Id']
+	));
+$usercount=0;
+$followeds=$followed->fetchall(PDO::FETCH_ASSOC);
+if (array_key_exists('kullanici', $_SESSION)){
+foreach ($followeds as $takipedilen) {
+	$sorgu=$db->prepare('SELECT * FROM posts WHERE User_Id=:userid ORDER BY Date DESC');
+	$sorgu->execute(array(
+		':userid'=>$takipedilen['Following_Id']
+		));
+
 	if ($sorgu->rowCount()) {
 	foreach ($sorgu as $civit) {
 		
@@ -93,11 +105,14 @@ glyphicon glyphicon-pencil"></i></a><br>';
 		echo '</div>';
 		}
 }
-
+}
+}
 else {
 	header('Location:http://localhost:8080/civitterr/Login.php');
 };
-};
+
+
+
 ?>
  	<form method="POST" action="post.php">
  	<textarea style="resize:none;width:350px;height:150px;" name="civit"></textarea>

@@ -4,8 +4,9 @@ require_once 'session.php';
 $islem=$_SESSION['kullanici'];
 $username=$islem['User_Name'];
 $userid=$islem['User_Id'];
+$follows=$db->prepare('SELECT * FROM follow WHERE Following_Id=:following');
 $users=$db->prepare('SELECT * FROM users WHERE User_Id=:userid');
-$posts=$db->prepare('SELECT * FROM posts WHERE User_Id=:userid');
+$posts=$db->prepare('SELECT * FROM posts WHERE User_Id=:userid ORDER BY Date DESC');
 $posts->execute(array(
 	':userid'=>$_GET['id']
 	));
@@ -32,7 +33,6 @@ $users->execute(array(
 	<li><a href="profile.php?id=<?php echo htmlspecialchars($userid); ?>">Profile</a></li>
 	<a href="Logout.php" id="logout"><i class="glyphicon glyphicon-log-out"></i></a>
 </ul>
-
 </nav></header>
 <div class="container">
 
@@ -43,6 +43,11 @@ if (array_key_exists('kullanici', $_SESSION)){
 	$userid=$islem['User_Id'];
 	if ($users->rowCount()) {
 	foreach ($users as $user) {
+		$follows->execute(array(
+			':following'=>$user['User_Id']
+			));
+		if ($follows->rowCount()){$unfollow=1;}
+		else {$unfollow=0;}
 		echo '<div class="userinfo">';
 		if ($userid==$user['User_Id']) {
 		
@@ -50,10 +55,21 @@ if (array_key_exists('kullanici', $_SESSION)){
 		}
 		else {
 			echo '<h3>'.$user['User_Name'].'</h3>';
-		}
+			if ($unfollow==0){
+			echo '<a class="follow" href="follow.php?id='.$user['User_Id'].'">';
+			echo '<i class="glyphicon glyphicon-plus">Follow</i></a>';
+			}
+				
+			else {
+			echo '<a class="follow" href="unfollow.php?id='.$user['User_Id'].'">';
+			echo '<i class="glyphicon glyphicon-plus">unFollow</i></a>';
+			}
+			
+			
+		};
 		echo '<p>'.$user['Email'].'</p>';
 		echo '</div>';
-		$counts=$db->prepare('SELECT count(*) AS NumberOfOrders FROM posts WHERE User_Id=:userid');
+		$counts=$db->prepare('SELECT count(*) FROM posts WHERE User_Id=:userid');
 $counts->execute(array(
 	':userid'=>$_GET['id'] 
 	));
@@ -81,7 +97,7 @@ if($posts->rowCount()){
 glyphicon glyphicon-pencil"></i></a><br>';
 			echo '<form class="ajax" action="edit.php?id='.$post['Post_Id'].'" method="POST" style="display:none;">';
 			echo '<textarea class="edittedtext" style="resize:none;width:350px;height:150px;" name="edittext">'; 
-
+			echo $post['Civit'];
 			echo '</textarea>';
 			echo '<button type="submit"  class="change"> Change</button></form>';
 			
