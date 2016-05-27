@@ -1,0 +1,17 @@
+
+.counts {position: absolute;top:200px;}
+.info {position: absolute;top:10px;}
+.userposts{ position: relative; margin-top:20px; border-bottom: 1px solid orange ;overflow-wrap: break-word;}
+
+.Editbuton {position:absolute;top:30px;right:0;}
+.delete {position: absolute;top:0; right: 0;}
+#form-photo {display:none;position: absolute;top:80px;left:150px; ;background-color: white;border:1px solid silver;}
+.yukle{ display: none; cursor: pointer;}
+#photoToggle{cursor:pointer; position: relative;width:100px;text-align: center;}
+#photoToggle:hover{border:1px solid white;}
+h4,p {color:white;font-family: 'PT Sans', sans-serif;font-weight: bold;}
+i{color:#AF1212;}
+.postcount{color:orange;}
+.Editbuton i {color:gray;}
+.userpost{color:black;}
+#logout:hover{color:red;}

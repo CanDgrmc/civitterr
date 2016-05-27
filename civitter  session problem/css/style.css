@@ -1,0 +1,36 @@
+.form {position: absolute;bottom:0;}
+.form input{background-color: rgba(255, 255, 255, 0.52);}
+.is-focused input{background-color: white; }
+.form button:hover{background-color: none;}
+.form button{text-align: center;}
+.login{
+	font-family: 'PT Sans Narrow', sans-serif;
+	font-weight: bold;
+	display: inline-block; 
+	background-image: url('../icons/login.png');
+	color:black;
+	background-color: #9EE1FF;
+	}
+.login:hover{background-color:#24BBFF;}
+.login:hover i{color:white;}
+
+.login i{	font-size: 19px; color:rgba(36, 118, 132, 0.82);}
+.signup{
+	font-weight: bold
+	display: inline-block; 
+	margin-left:30px;
+	background-color: #54FFCE;
+	background-image: url('../icons/signup.png');
+}
+.signup:hover{background-color:#24BBFF;}
+.signup:hover i{color:white;}
+.signup i{font-size:19px; color:rgba(14, 111, 107, 0.82);}
+#butonlar{display: block}
+body{background-image: url('../img/suitupheader.jpg');
+	background-repeat:repeat;
+   -webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	background-size:cover;
+	background-position:center;}
+.hata{color: rgba(245, 48, 48, 0.73);position: absolute;}

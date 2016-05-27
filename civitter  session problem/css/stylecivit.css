@@ -1,0 +1,26 @@
+header{
+	height: 300px;
+	background-color: white;
+	border-bottom:2px solid orange;
+	position: relative;
+	background-image: url('../img/civitsbg.jpg');
+	background-repeat:repeat;
+   -webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	background-size:cover;
+	background-position:top;
+	}
+.menu{margin:0;text-align: center;}
+.menu li{display: inline-block;height: 50px;margin:0;}
+.menu li a{ padding:10px;color:#FFB300;font-weight: 600;}
+.menu li a:hover{text-decoration: none;border-bottom:1px solid white;}
+#logout{float: right;color:#AF1212;font-weight: bold;margin-right: 10px;font-size: 18px;}
+#logout:hover{color:red;}
+.civitler{border-bottom:1px solid orange; position: relative;margin-top:40px; }
+.civitler h4{color:#4966EA;font-weight: bold;}
+.civitler>p{margin-left: 10px;}
+.civitler span{float: right; color:silver;}
+.Editbuton1{position: absolute;right: 0;top:10px;color:gray;}
+.delete{position: absolute;right: 0;top: -20px;color:#AF1212;}
+.likebutton p{display: inline-block; margin-right: 5px;}
